@@ -1,0 +1,27 @@
+$font-family-sans-serif: "Roboto", sans-serif;
+
+$white: #ffffff;
+$black: #000000;
+$lynx-white: #f5f6fa;
+$blue-nights: #353b48;
+$vanadyl-blue: #0097e6;
+$navy: #00425a;
+$dark-blue: #21356d;
+$light-green: #9bdf46;
+
+$light: $lynx-white;
+$dark: $blue-nights;
+$primary: $vanadyl-blue;
+$success: $light-green;
+$link-decoration: none;
+$navbar-light-active-color: $vanadyl-blue;
+
+:export {
+  white: $white;
+  black: $black;
+  light: $light;
+  dark: $dark;
+  vanadyl: $vanadyl-blue;
+  dblue: $dark-blue;
+  lgreen: $light-green;
+}
