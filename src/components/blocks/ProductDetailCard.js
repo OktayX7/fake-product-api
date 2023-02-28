@@ -1,10 +1,16 @@
 import {Badge, Button} from "components/base";
 import {useThemeContext} from "context";
+import {ifElse} from "function";
 
 export const ProductDetailCard = ({product}) => {
   const {theme} = useThemeContext();
   return (
-    <div className={`card mb-3 text-bg-${theme} ${theme === "dark" ? "border-success" : "border-dark"}`}>
+    <div
+      className={`card mb-3 text-bg-${theme} ${ifElse.ternary({
+        condition: theme === "dark",
+        ifTrue: "border-primary",
+        ifFalse: "border-success",
+      })}`}>
       <img
         src={product.image}
         className="card-img-top img-fluid my-3 d-block mx-auto"

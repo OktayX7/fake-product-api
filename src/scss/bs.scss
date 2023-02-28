@@ -96,15 +96,4 @@ $utilities: map-merge(
   )
 );
 
-$theme-colors: (
-  "primary": $vanadyl-blue,
-  "secondary": $secondary,
-  "success": $light-green,
-  "info": $info,
-  "warning": $warning,
-  "danger": $danger,
-  "light": $light,
-  "dark": $dark,
-);
-
 @import "bootstrap/scss/utilities/api";

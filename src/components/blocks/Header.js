@@ -2,6 +2,9 @@ import React from "react";
 import {NavLink, Link} from "react-router-dom";
 import {Button, Logo} from "components/base";
 import {useThemeContext} from "context";
+import {ifElse} from "function";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSun, faMoon} from "@fortawesome/free-regular-svg-icons";
 
 //scss
 
@@ -12,14 +15,6 @@ export const Header = () => {
   ];
 
   const {theme, setTheme} = useThemeContext();
-
-  const handleTheme = (darkMode, lightMode) => {
-    setTheme(theme === darkMode ? lightMode : darkMode);
-  };
-
-  const themeButtonColor = (themeColor, darkMode, lightMode) => {
-    return theme === themeColor ? darkMode : lightMode;
-  };
 
   return (
     <header>
@@ -38,12 +33,27 @@ export const Header = () => {
                 </li>
               ))}
             </ul>
-            <Button
-              className="w-20"
-              onClick={() => handleTheme("dark", "light")}
-              variant={themeButtonColor("dark", "primary", "success")}>
-              Change Theme to {themeButtonColor("dark", "Light", "Dark")}
-            </Button>
+
+            <FontAwesomeIcon
+              onClick={() =>
+                ifElse.setState({
+                  setState: setTheme,
+                  condition: theme === "dark",
+                  ifTrue: "light",
+                  ifFalse: "dark",
+                })
+              }
+              icon={ifElse.ternary({
+                condition: theme === "dark",
+                ifTrue: faMoon,
+                ifFalse: faSun,
+              })}
+              className={`fs-1 cursor-pointer mb-3 text-${ifElse.ternary({
+                condition: theme === "dark",
+                ifTrue: "white",
+                ifFalse: "warning",
+              })}`}
+            />
           </div>
         </div>
       </nav>

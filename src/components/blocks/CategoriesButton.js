@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import {Button} from "components/base";
 import {useThemeContext} from "context";
+import {ifElse} from "function";
 
 export const CategoriesButton = () => {
   const categories = [
@@ -39,7 +40,13 @@ export const CategoriesButton = () => {
         {categories.map((category) => {
           return (
             <Link to={`${category.path}`} key={category.id}>
-              <Button variant={theme === "dark" ? "primary" : "success"} className="text-white">
+              <Button
+                variant={ifElse.ternary({
+                  condition: theme === "dark",
+                  ifTrue: "primary",
+                  ifFalse: "secondary",
+                })}
+                className="text-white">
                 {category.text}
               </Button>
             </Link>
