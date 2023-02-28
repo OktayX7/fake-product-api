@@ -1,9 +1,11 @@
 import {Badge, Button} from "components/base";
 import {useThemeContext} from "context";
 import {Link} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 export const ProductCard = ({product}) => {
   const {theme} = useThemeContext();
+  const {category} = useParams();
   return (
     <div className="col-md-6 col-lg-4 ">
       <div className={`card mb-3 text-bg-${theme} ${theme === "dark" ? "border-primary" : "border-success"}`}>
@@ -28,7 +30,7 @@ export const ProductCard = ({product}) => {
                 {` Rate: ${product.rating.rate}`}
               </Badge>
             </div>
-            <Link to={`${product.id}`}>
+            <Link to={category ? `${product.id}` : `${product.slug}/${product.id}`}>
               <Button className="me-md-4 me-xxl-0" variant="primary">
                 Detail
               </Button>
