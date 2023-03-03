@@ -1,6 +1,6 @@
 import React from "react";
 import {NavLink, Link} from "react-router-dom";
-import {Button, Logo} from "components/base";
+import {Logo} from "components/base";
 import {useThemeContext} from "context";
 import {ifElse} from "function";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -48,7 +48,7 @@ export const Header = () => {
                 ifTrue: faMoon,
                 ifFalse: faSun,
               })}
-              className={`fs-1 cursor-pointer mb-3 text-${ifElse.ternary({
+              className={`fs-1 cursor-pointer text-${ifElse.ternary({
                 condition: theme === "dark",
                 ifTrue: "white",
                 ifFalse: "warning",

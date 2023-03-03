@@ -13,6 +13,7 @@
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar";
 @import "bootstrap/scss/badge";
+@import "bootstrap/scss/offcanvas";
 
 @import "bootstrap/scss/helpers";
 
@@ -45,6 +46,7 @@ $utilities: map-merge(
         10: 10%,
         15: 15%,
         20: 20%,
+        23: 23%,
         25: 25%,
         30: 30%,
         35: 35%,
@@ -69,6 +71,7 @@ $utilities: map-merge(
       property: height,
       class: h,
       values: (
+        3: 3%,
         5: 5%,
         10: 10%,
         15: 15%,

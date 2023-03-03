@@ -1,10 +1,11 @@
 import {Badge, Button} from "components/base";
-import {useThemeContext} from "context";
+import {useThemeContext, useBasketContext} from "context";
 import {Link} from "react-router-dom";
 import {useParams} from "react-router-dom";
-import {ifElse} from "function";
+import {ifElse, addToBasket} from "function";
 export const ProductCard = ({product}) => {
   const {theme} = useThemeContext();
+  const {basket, setBasket} = useBasketContext();
   const {category} = useParams();
   return (
     <div className="col-md-6 col-lg-4 ">
@@ -21,7 +22,7 @@ export const ProductCard = ({product}) => {
           style={{width: "15rem", height: "15rem"}}
         />
         <div className="card-body">
-          <h5 className="card-title">{product.title}</h5>
+          <h5 className="card-title fw-bold">{product.title}</h5>
           <p className="card-text">
             {product.description.length > 200 ? product.description.substring(0, 200) + "..." : product.description}
           </p>
@@ -46,7 +47,17 @@ export const ProductCard = ({product}) => {
                 Detail
               </Button>
             </Link>
-            <Button variant="success">Add to Basket</Button>
+            <Button
+              variant="success"
+              onClick={() => {
+                basket.find((item) => item.id === product.id)
+                  ? setBasket(
+                      basket.map((item) => (item.id === product.id ? {...item, quantity: item.quantity + 1} : item))
+                    )
+                  : addToBasket(product, basket, setBasket);
+              }}>
+              Add to Basket
+            </Button>
           </div>
         </div>
       </div>

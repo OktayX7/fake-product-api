@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import {useThemeContext} from "context";
 
-export const Button = ({variant, size, type, disabled, outline, className, onClick, children}) => {
+export const Button = ({variant, size, type, disabled, outline, className, onClick, children, atribute}) => {
   const {theme} = useThemeContext();
 
   const renderClass = () => {
@@ -15,8 +15,19 @@ export const Button = ({variant, size, type, disabled, outline, className, onCli
     return classes;
   };
 
+  const {dataBsToggle, dataBsTarget} = atribute || {
+    dataBsToggle: null,
+    dataBsTarget: null,
+  };
+
   return (
-    <button type={type} className={renderClass()} disabled={disabled} onClick={onClick}>
+    <button
+      type={type}
+      data-bs-toggle={dataBsToggle}
+      data-bs-target={dataBsTarget}
+      className={renderClass()}
+      disabled={disabled}
+      onClick={onClick}>
       {children}
     </button>
   );

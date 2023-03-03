@@ -2,7 +2,6 @@ import {useProductContext} from "context";
 import {getProducts} from "apis/product";
 import {useState} from "react";
 import {Loading} from "components/base";
-
 import {useEffect} from "react";
 import {ProductCard} from "components/blocks";
 
@@ -23,7 +22,8 @@ export const ProductList = () => {
       .then((response) => {
         const products = response.map((item) => {
           const slug = slugify(item.category);
-          return {...item, slug};
+          const quantity = 1;
+          return {...item, slug, quantity};
         });
         console.log(products);
         setProducts(products);

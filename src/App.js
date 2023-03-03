@@ -7,7 +7,7 @@ import {MasterLayout, ProductLayout} from "layout";
 import {Home, ProductList, ProductDetail, Categories} from "pages";
 
 //context
-import {ProductContext, ThemeContext} from "context";
+import {ProductContext, ThemeContext, BasketContext} from "context";
 
 function App() {
   return (
@@ -15,11 +15,13 @@ function App() {
       <Route
         path="/"
         element={
-          <ThemeContext>
-            <ProductContext>
-              <MasterLayout />
-            </ProductContext>
-          </ThemeContext>
+          <BasketContext>
+            <ThemeContext>
+              <ProductContext>
+                <MasterLayout />
+              </ProductContext>
+            </ThemeContext>
+          </BasketContext>
         }>
         <Route index element={<Home />} />
         <Route path="/products" element={<ProductLayout />}>
